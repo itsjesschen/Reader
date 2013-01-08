@@ -1,0 +1,135 @@
+body{
+	background-image:url(../img/P4GfA.jpg);
+	background-repeat:no-repeat;
+	background-position:top center;
+	background-color: #EBEBEB;
+}
+form{
+	display:inline-block;
+}
+ul, li {
+	list-style-type: none;
+}
+h2{
+	/*font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;*/
+	font-weight: 300;
+	/*color:white;*/
+	text-align :center;
+	vertical-align: center;
+	color: #333333;
+	font-size:x-large;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+h3{
+	text-align : center;
+	font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+	font-weight: 300;
+	color:white;
+	vertical-align: center;
+	font-size: large;
+}
+img{
+	display:inline-block;
+	margin-left:auto;
+	margin-right:auto;
+	vertical-align:middle;
+}
+img.center{
+	display:block;
+}
+
+div>li{
+	max-width:300px;
+	height:65px;
+	overflow:hidden;
+}
+.TwitterDIV, .RSSDIV, .LIST {
+	text-align: center;
+}
+
+.LIST{
+	margin: 50px;
+}
+
+#RSSModule, #TweeterModule {
+	padding : 10px;
+	margin : 20px;
+}
+#TweeterModule div>li{
+	/*background-color : #1B8CC1;*/
+	background-image:url(../img/blue_small_gradient.jpg);
+	background-repeat:repeat-x;
+	background-size: 100%;
+	background-position:bottom;
+	border:1px solid;
+	border-color: #42AADA;
+}
+#TweeterModule a{
+	color: black;
+	font-size: ;
+	text-align: center;
+}
+
+.hidden, .date{
+	display:none;
+	text-align: center;
+	margin-left: 10px;
+	margin-right:10px;
+	z-index:2;
+	position: relative;
+	font-size: small;
+	background-color: rgba(255,236,255,.8);
+}
+.detail:hover .date {
+/*	background-color: green;*/
+	display:block;
+	margin:0px;
+	font-size:small;
+	font-style: italic ;
+/*	height:40px;*/
+}
+.FeedBlock {
+	width : 300px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 20px;
+}
+.FeedContent ul{
+	/*border:1px solid #F44AFA;*/
+	/*background-color : grey;*/
+}
+
+#RSSModule div>li{
+	background-image:url(../img/pink.jpg);
+	background-repeat:repeat-x;
+	background-size: 100%;
+	background-position:top;
+	border: 2px solid #F340AB;
+}
+
+.FeedContent .preview{
+	max-width: 100px;
+	max-height: 100px;
+	overflow:hidden;
+}
+.ArticleList {
+	padding : 1px;
+	margin : 5px;
+}
+
+.ArticleList li {
+	background-color: rgba(255,236,255,.5);
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	padding : 0px;
+	margin : 0px;
+	height:20px;
+	overflow:hidden;
+	z-index:1;
+}
+.detail:hover{
+	height:auto;
+	width:auto;
+	font-style: italic;
+}
+
+
