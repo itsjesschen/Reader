@@ -40,7 +40,9 @@ div>li{
 	height:65px;
 	overflow:hidden;
 }
-
+title{
+	display: inline-block;
+}
 .pageHeader{
 	border-bottom: 1px solid #CCCCCC;
 	font-family: 'Lucida Sans Unicode', 'Lucida Grande', Tahoma, sans-serif;
