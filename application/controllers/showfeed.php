@@ -1,17 +1,16 @@
 <?php
 class ShowFeed_Controller extends Base_Controller {
 
-	public function action_showrss(){
+	public function action_showRSS(){
 		$url= $_GET['URL'];
 		$num= $_GET['NUM'];
-		$feedlist = RSS::getArticles($url, $num);
+		$feedlist = RSS::getArticles($url, $num);	
 		return $feedlist;
 	}
 	public function action_index(){
-		return ('hello Show Feed!');
 	}
 
-	public function action_showtweets(){
+	public function action_showTweets(){
 		$searchID = $_GET['USERID'];
 		$num = $_GET['NUM'];
 		$Twitter = new Twitter($searchID);
@@ -19,7 +18,7 @@ class ShowFeed_Controller extends Base_Controller {
 		return $Tweets;
 	}
 
-	public function action_showpage(){
+	public function action_showPage(){
 		$url = $_GET['URL'];
 		$pageHTML = RSS::getPage($url);
 		return $pageHTML;

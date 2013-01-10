@@ -11,14 +11,10 @@ ul, li {
 	list-style-type: none;
 }
 h2{
-	/*font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;*/
-	font-weight: 300;
-	/*color:white;*/
 	text-align :center;
 	vertical-align: center;
-	color: #333333;
 	font-size:x-large;
-	font-family: Tahoma, Geneva, sans-serif;
+	/*font-family: Tahoma, Geneva, sans-serif;*/
 }
 h3{
 	text-align : center;
@@ -28,6 +24,7 @@ h3{
 	vertical-align: center;
 	font-size: large;
 }
+
 img{
 	display:inline-block;
 	margin-left:auto;
@@ -39,35 +36,45 @@ img.center{
 }
 
 div>li{
-	max-width:300px;
+	max-width:350px;
 	height:65px;
 	overflow:hidden;
 }
-.TwitterDIV, .RSSDIV, .LIST {
-	text-align: center;
+
+.pageHeader{
+	border-bottom: 1px solid #CCCCCC;
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', Tahoma, sans-serif;
+	font-size: 12px;
+	line-height: 1.8em;
+	color: #555;
+}
+.article{
+	background-color: rgba(255,236,255,.5);
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	padding : 0px;
+	margin : 5px;
+	height:60px;
+	width:95%;
+	overflow:hidden;
+	display:inline-block;
+	z-index:1;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
-.LIST{
-	margin: 50px;
+.rsstitle{
+	text-align: center;
+	margin-left: 10px;
+	margin-right:10px;
+	z-index:2;
+	position: relative;
+	font-size: small;
+	background-color: rgba(255,236,255,.8);
 }
 
 #RSSModule, #TweeterModule {
 	padding : 10px;
 	margin : 20px;
-}
-#TweeterModule div>li{
-	/*background-color : #1B8CC1;*/
-	background-image:url(../img/blue_small_gradient.jpg);
-	background-repeat:repeat-x;
-	background-size: 100%;
-	background-position:bottom;
-	border:1px solid;
-	border-color: #42AADA;
-}
-#TweeterModule a{
-	color: black;
-	font-size: ;
-	text-align: center;
 }
 
 .hidden, .date{
@@ -88,15 +95,11 @@ div>li{
 	font-style: italic ;
 /*	height:40px;*/
 }
-.FeedBlock {
-	width : 300px;
+.article-list {
+	width : 350px;
 	display: inline-block;
 	vertical-align: top;
 	margin: 20px;
-}
-.FeedContent ul{
-	/*border:1px solid #F44AFA;*/
-	/*background-color : grey;*/
 }
 
 #RSSModule div>li{
@@ -107,25 +110,12 @@ div>li{
 	border: 2px solid #F340AB;
 }
 
-.FeedContent .preview{
+.Feed .preview{
 	max-width: 100px;
 	max-height: 100px;
 	overflow:hidden;
 }
-.ArticleList {
-	padding : 1px;
-	margin : 5px;
-}
 
-.ArticleList li {
-	background-color: rgba(255,236,255,.5);
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	padding : 0px;
-	margin : 0px;
-	height:20px;
-	overflow:hidden;
-	z-index:1;
-}
 .detail:hover{
 	height:auto;
 	width:auto;

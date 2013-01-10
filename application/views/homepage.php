@@ -2,46 +2,34 @@
 <html>
 <head>
 	<title></title>
+	<?php 
+		echo HTML::style('css/reset.css');
+		echo HTML::style('css/styles.css');
+		echo HTML::style('http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css');
+	?>
 </head>
-<body>
-<div id="TwitterFeeds">
-	<h2> Currently Added Twitter Users </h2>
-	<hr>
-		<?php 
-			echo '<div id="TweeterModule">';
-			echo '<ul class=FeedContent>';
-			foreach($Tweeters as $tweeter){
-				echo "<a href = '#' name='Clickable' class=hidden id='$tweeter->url'></a>";
-				echo "<div class=FeedBlock id ='".$tweeter->url."_min'></div>";
-			}
-			echo '</ul>';
-			echo '</div>';
-		?>
-	</div>
-
-	<div class = "RSSFeeds">
+<<body>
+	<div class = "pageHeader">
 		<h2> Currently Added Feeds </h2>
-		<hr>
+	</div>
+	<div class = "RSSFeeds">
 		<?php 
-			echo HTML::style('css/styles.css');
-			echo HTML::style('http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css');
 			echo '<div id="RSSModule">';
-			echo '<ul class = FeedContent>';
+			echo '<ul class = Feed>';
 			foreach($RSS as $page){
-				// $channel = $pages->channel; 
-				echo '<div class=FeedBlock>';
+				echo '<div class=article-list>';
 					echo "<a href = '#' class=hidden id='$page->url'></a>";
 					echo "<li><h3>".$page->name."</h3></li>";
-					echo "<div id='".$page->url."_max' class='hidden'></div>";
-					echo "<div id='".$page->url."_min' class=''>";
+					echo "<div id='".$page->url."_max'>";
+					echo "</div>";
+					echo "<div id='".$page->url."_min' class= 'rsstitle'>";
 					echo '</div>';
 				echo '</div>';
 			}
 			echo '</ul>';
-			echo '</div>';
+		    echo '</div>';
 		?>	
 	</div>
-	
 	</div>
 </body>
 </html>
