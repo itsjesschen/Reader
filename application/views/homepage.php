@@ -8,7 +8,7 @@
 		echo HTML::style('http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css');
 	?>
 </head>
-<<body>
+<body>
 	<div class = "pageHeader">
 		<h2> Currently Added Feeds </h2>
 	</div>
