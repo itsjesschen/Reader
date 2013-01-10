@@ -3,7 +3,7 @@
 <head>
 	<title></title>
 	<?php 
-		echo HTML::style('css/reset.css');
+		// echo HTML::style('css/reset.css');
 		echo HTML::style('css/styles.css');
 		echo HTML::style('http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css');
 	?>
