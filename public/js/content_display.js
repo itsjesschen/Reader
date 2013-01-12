@@ -5,43 +5,12 @@ function populateInitialFeeds(){
 	// populateInitialTweets();
 	populateInitialRSS();
 }
-document.getElementById('RSSModule').onclick= function(e){
-		var cur = e.target.name;
-	if( cur && ( cur.indexOf("http") !== -1)){
-		//console.log('got into loadhttp function : ' + e.target.name);
-		var cur = $(e.target).next();
-		// console.log($(e.target).next());
-		if (cur.attr('class') === 'hidden'){
-			console.log("removes class");
-			cur.removeClass('hidden');
-		}else{
-			console.log("has class");
-			cur.addClass('hidden');
-		}
-		e.preventDefault();
-	}
-	else if(e.target.name === "Clickable"){
-		min = document.getElementById(e.target.id + '_min');
-		max = document.getElementById(e.target.id + '_max');
-		
-		if(max.getAttribute('class') === 'show'){//if it is maxed right now
-			var ID= e.target.id;
-			console.log(ID);
-			getRSS(ID, 3);
-		}else{// if( min.getAttribute('class') === 'show'){
-			var ID= e.target.id;
-			console.log(ID);
-			getRSS(ID, 30);	
-		}
-		e.preventDefault();
-	}
-};
+
 function deleteLinks(){
 
 }
 function getRSS(ID, NUM){
 	var URL = "../showfeed/showRSS?URL=" + ID + "&NUM=" + NUM;
-	
 	var element = ID + '_min';
 	var min = document.getElementById(element);
 	var max = document.getElementById(ID + '_max');
@@ -55,44 +24,33 @@ function getRSS(ID, NUM){
 	xhr.open('GET', URL, true);
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState === 4 && xhr.status === 200){
-			if(NUM === 3 ){//for minimize feeds
-				// $(max).slideUp('fast').html();
+			try{
 				$(min).hide();
 				min.innerHTML = xhr.responseText;
-				//console.log($('channel').children('description,item, :last'));
-				//for RSS 2.0
-				$('channel').find(':not(description,item, item title, item pubdate, :last-child)').hide();
-				//for RSS 
-				//console.log($('channel').find(' item pubdate').show());
-				$('item:not(.article)').children().hide();
+				$curList = $('item:not(.article-title)');
+				//hides detail of feed except articles
+				$('channel').find(':not(item, item title, item pubdate, :last-child)').hide();
+				//hides all children 
+				$curList.children().hide();
 				var length = $('link').length;
 					for ( var i = 0; i < length; i++){
 						var node = $('link')[i];
 						
 						if (node && node.nextSibling)node.nextSibling.nodeValue="";
 					}
-				var length = $('item:not(.article) > link').length;
+				var length = $('item:not(.article-title) > link').length;
 					for ( var i = 0; i < length; i++){
-						var node = $('item:not(.article) > link')[i];
+						var node = $('item:not(.article-title) > link')[i];
 						
 						if (node && node.nextSibling)node.nextSibling.nodeValue="";
 					}
-				$('item:not(.article) > title, pubdate').show();
-				$('item:not(.article)').addClass('article').slice(3, 100).hide();
-				$(min).show('slow');
-				
-				// max.innerHTML="";
-				// $(min).slideDown('slow');
-				// min.setAttribute('class','');
-				// max.setAttribute('class', 'hidden');
+				$('item:not(.article-title) > title,item:not(.article-title) >pubdate').show();
+				console.log($($curList.addClass('article-title')[2]).addClass('last-item'));
+				$curList.slice(3, 100).hide().parent().prepend( $('<item>Show More...</item>').addClass('toggleItem article-title')).click(toggleItems);
+				$(min).slideDown();
 			}
-			else{//for max amount of feeds
-				// $(min).slideUp('fast');
-				// max.innerHTML = xhr.responseText;
-				// min.innerHTML ="";
-				// $(max).slideDown('slow');
-				// min.setAttribute('class','hidden');
-				// max.setAttribute('class', 'show');
+			catch(err){
+				min.innerHTML = "RSS Feed did not respond";
 			}
 		}else if (xhr.status >= 400){
 			console.log('There was an error!');
@@ -100,16 +58,26 @@ function getRSS(ID, NUM){
 	}
 	xhr.send(null);
 }
+function toggleItems(){
+	$this = $(this).children(':first-child');
+	if(!$this.hasClass('expand')){
+	     $this.siblings('item:hidden').slideDown().end().addClass('expand').text('Show Less...');
+	     $($this.siblings('item')[2]).removeClass('last-item');
+	     $this.siblings('item:last').addClass('last-item');
+	     console.log('expanded');
+	}else{//is expanded, must now contract
+		$this.siblings('item').slice(3, 100).slideUp().end();
+		$this.removeClass('expand').text('Show More...'); 
+		$($this.siblings('item')[2]).addClass('last-item');
+		console.log('contracted');
+	    }
+}
 function populateInitialRSS(){
 	var RSSFeeders = document.getElementById('RSSModule').getElementsByTagName('a');
 	var ID;
 	for(var i = 0; i< RSSFeeders.length;  i++){
 		ID = RSSFeeders[i].id;
-		//console.log(ID);
 		getRSS(ID, 3);
 	}
 }
 
- $(".ArticleList.li").mouseenter(
- 	  function(e) { console.log($(this));$(this).children(".date").show("slide"); }).mouseleave(
- 	  function() { $(this).children(".date").hide("slide"); });

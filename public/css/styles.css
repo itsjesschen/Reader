@@ -10,20 +10,6 @@ form{
 ul, li {
 	list-style-type: none;
 }
-h2{
-	text-align :center;
-	vertical-align: center;
-	font-size:x-large;
-	/*font-family: Tahoma, Geneva, sans-serif;*/
-}
-h3{
-	text-align : center;
-	font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
-	font-weight: 300;
-	color:white;
-	vertical-align: center;
-	font-size: large;
-}
 
 img{
 	display:inline-block;
@@ -31,63 +17,86 @@ img{
 	margin-right:auto;
 	vertical-align:middle;
 }
-img.center{
-	display:block;
-}
 
-div>li{
-	max-width:350px;
-	height:65px;
-	overflow:hidden;
-}
-title{
-	display: inline-block;
-}
 .pageHeader{
+	text-align :center;
+	vertical-align: center;
+	font-size:x-large;	
 	border-bottom: 1px solid #CCCCCC;
 	font-family: 'Lucida Sans Unicode', 'Lucida Grande', Tahoma, sans-serif;
 	font-size: 12px;
 	line-height: 1.8em;
 	color: #555;
 }
-.article{
+
+#RSSModule{
+	padding : 10px;
+	margin : 10px;
+}
+.feed{
+	text-align: center;
+	position: relative;
+	font-size: small;
+	width : 350px;
+	margin:10px;
+	display: inline-block;
+	vertical-align: top;
+}
+.feed-title{
+	text-align : center;
+	font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+	font-weight: 300;
+	color:white;
+	margin-bottom:5px;
+	height:40px;
+	vertical-align: center;
+	font-size: 250%;
+	background-image:url(../img/pink.jpg);
+	background-repeat:repeat-x;
+	background-size: 100%;
+	background-position:top;
+	border: 2px solid #F340AB;
+	text-align: center;
+}
+
+.article-title{
 	background-color: rgba(255,236,255,.5);
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	padding : 0px;
-	margin : 5px;
-	height:60px;
+	margin : 2px;
+	height:40px;
 	width:95%;
+	font-size:110%;
 	overflow:hidden;
 	display:inline-block;
-	z-index:1;
+	border-bottom:1px solid #CCCCCC;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
-.rsstitle{
+item.toggleItem{
+	height:20px;
+}
+.article-list{
 	text-align: center;
-	margin-left: 10px;
-	margin-right:10px;
-	z-index:2;
 	position: relative;
 	font-size: small;
+	width : 350px;
+	display: inline-block;
+	vertical-align: top;
 	background-color: rgba(255,236,255,.8);
 }
-
-#RSSModule, #TweeterModule {
-	padding : 10px;
-	margin : 20px;
+.last-item{
+	border-bottom:none;
 }
-
 .hidden, .date{
 	display:none;
 	text-align: center;
 	margin-left: 10px;
 	margin-right:10px;
-	z-index:2;
 	position: relative;
 	font-size: small;
-	background-color: rgba(255,236,255,.8);
+	background-color: rgba(255,236,255,.2);
 }
 .detail:hover .date {
 /*	background-color: green;*/
@@ -96,26 +105,6 @@ title{
 	font-size:small;
 	font-style: italic ;
 /*	height:40px;*/
-}
-.article-list {
-	width : 350px;
-	display: inline-block;
-	vertical-align: top;
-	margin: 20px;
-}
-
-#RSSModule div>li{
-	background-image:url(../img/pink.jpg);
-	background-repeat:repeat-x;
-	background-size: 100%;
-	background-position:top;
-	border: 2px solid #F340AB;
-}
-
-.Feed .preview{
-	max-width: 100px;
-	max-height: 100px;
-	overflow:hidden;
 }
 
 .detail:hover{
