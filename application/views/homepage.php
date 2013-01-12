@@ -30,6 +30,6 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-<script src="../../js/content_display.js"></script>
+<script src="../../public/js/content_display.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
