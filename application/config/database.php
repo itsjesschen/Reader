@@ -67,25 +67,25 @@ return array(
 			'prefix'   => '',
 		),
 
-		// 'mysql' => array(
-		// 	'driver'   => 'mysql',
-		// 	'host'     => 'localhost',
-		// 	'database' => 'database',
-		// 	'username' => 'root',
-		// 	'password' => '',
-		// 	'charset'  => 'utf8',
-		// 	'prefix'   => '',
-		// ),
-
 		'mysql' => array(
 			'driver'   => 'mysql',
-			'host'     => 'tunnel.pagodabox.com',
+			'host'     => 'localhost',
 			'database' => 'rss_feed',
-			'username' => 'marla',
-			'password' => 'G0WXPr6b',
+			'username' => 'root',
+			'password' => '',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 		),
+
+		// 'mysql' => array(
+		// 	'driver'   => 'mysql',
+		// 	'host'     => 'tunnel.pagodabox.com',
+		// 	'database' => 'rss_feed',
+		// 	'username' => 'marla',
+		// 	'password' => 'G0WXPr6b',
+		// 	'charset'  => 'utf8',
+		// 	'prefix'   => '',
+		// ),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

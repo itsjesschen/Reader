@@ -4,80 +4,102 @@ window.onload = populateInitialFeeds;
 function populateInitialFeeds(){
 	// populateInitialTweets();
 	populateInitialRSS();
+	initDescription();
 }
 
 function deleteLinks(){
 
 }
-function getRSS(ID, NUM){
-	var URL = "../showfeed/showRSS?URL=" + ID + "&NUM=" + NUM;
-	var element = ID + '_min';
-	var min = document.getElementById(element);
-	var max = document.getElementById(ID + '_max');
-	if(NUM === 3){//going to minimize feed
-		//max.innerHTML = "<img src=../img/ajax-loader_pink.gif class=center>";
-		min.innerHTML = "<img src=../img/ajax-loader_pink.gif class=center>";
-	}else{
-		min.innerHTML = "<img src=../img/ajax-loader_pink.gif class=center>";
-	}
+
+function initDescription(){ // so that only 1 click handler is assigned
+	var $min = $("ul.article-list");
+	$min.on('click','div', function(){
+    			$this = $(this);
+    			var $description = $this.find("p");
+    			if( $description.hasClass("expand")){
+    				$description.removeClass("expand");
+    				$this.removeClass("expand");
+    				// $description.slideUp();
+    			}else{
+    				$description.addClass("expand");
+    				$this.animate($this.addClass("expand"), 1000, null);
+    				// $description.slideDown();
+    			}
+    });
+    $( "#RSSModule" ).sortable();
+    $( "#RSSModule" ).disableSelection();
+}
+function getRSS(Feed){
+	var URL = "../showfeed/showRSS?URL=" + Feed.id;
+	var $min = $("ul.article-list");
+
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', URL, true);
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState === 4 && xhr.status === 200){
-			try{
-				$(min).hide();
-				min.innerHTML = xhr.responseText;
-				$curList = $('item:not(.article-title)');
-				//hides detail of feed except articles
-				$('channel').find(':not(item, item title, item pubdate, :last-child)').hide();
-				//hides all children 
-				$curList.children().hide();
-				var length = $('link').length;
-					for ( var i = 0; i < length; i++){
-						var node = $('link')[i];
-						
-						if (node && node.nextSibling)node.nextSibling.nodeValue="";
-					}
-				var length = $('item:not(.article-title) > link').length;
-					for ( var i = 0; i < length; i++){
-						var node = $('item:not(.article-title) > link')[i];
-						
-						if (node && node.nextSibling)node.nextSibling.nodeValue="";
-					}
-				$('item:not(.article-title) > title,item:not(.article-title) >pubdate').show();
-				console.log($($curList.addClass('article-title')[2]).addClass('last-item'));
-				$curList.slice(3, 100).hide().parent().prepend( $('<item>Show More...</item>').addClass('toggleItem article-title')).click(toggleItems);
-				$(min).slideDown();
-			}
-			catch(err){
-				min.innerHTML = "RSS Feed did not respond";
-			}
+			var xml = xhr.responseText;
+			// console.log(xml);
+			var $xmlitems = $(xml).find("item");
+
+    		$xmlitems.each(function() {
+	         var $this = $(this),
+	            item = {
+	                title: $this.find("title").text(),
+	                link: $this.find("link").text(),
+	                description: $this.find("description").text(),
+	                pubDate: $this.find("pubDate").text(),
+	                author: $this.find("author").text()
+	        	}
+	        	console.log(this);
+	        	if(item.link === ""){
+	        		item.link = "#";
+	        	}
+	        	$min.append(" <li>\
+	        						<div>\
+	        							<a href= '"+item.link+"' class ='art-title' >"+item.title+"</a>\
+	        							<span class = 'art-date'>"+item.pubDate+"</span>\
+	        							<span>"+item.author+"</span>\
+	        							<p class = 'art-desc'>"+item.description+"</p>\
+	        						</div>\
+	        					</li>");
+	        	$min.find('div').addClass("article");
+	    	});
+
+			$('#ArticleModule').find("img").hide();
+    		// $min.find("p").hide();//hide description
+			$min.slideDown();
 		}else if (xhr.status >= 400){
 			console.log('There was an error!');
 		}
+
 	}
 	xhr.send(null);
 }
-function toggleItems(){
-	$this = $(this).children(':first-child');
-	if(!$this.hasClass('expand')){
-	     $this.siblings('item:hidden').slideDown().end().addClass('expand').text('Show Less...');
-	     $($this.siblings('item')[2]).removeClass('last-item');
-	     $this.siblings('item:last').addClass('last-item');
-	     console.log('expanded');
-	}else{//is expanded, must now contract
-		$this.siblings('item').slice(3, 100).slideUp().end();
-		$this.removeClass('expand').text('Show More...'); 
-		$($this.siblings('item')[2]).addClass('last-item');
-		console.log('contracted');
-	    }
-}
 function populateInitialRSS(){
 	var RSSFeeders = document.getElementById('RSSModule').getElementsByTagName('a');
-	var ID;
-	for(var i = 0; i< RSSFeeders.length;  i++){
-		ID = RSSFeeders[i].id;
-		getRSS(ID, 3);
-	}
+	var Feed = RSSFeeders[0];
+
+	//add selection highlight
+	$(Feed).addClass('selected');
+
+	//adds swirly vortex of waiting
+	var $title = $("#ArticleModule");
+	$title.append("<img src=../img/loader-bar.gif class=center>");
+	$title.find("img").show();
+
+	getRSS(Feed);
 }
 
+function getRSSWrapper(feed){
+	//adds selection highlight
+	$('.feed-title').removeClass('selected');//removes selection from all other titles
+	$(feed).addClass('selected'); //adds selection to current title
+
+	//adds swirly vortex of waiting
+	$('#ArticleModule').find("img").show();
+
+	var $min = $("ul.article-list");
+	$min.html("");//clear all html already in
+	$min.slideUp();
+	getRSS(feed);
+}
