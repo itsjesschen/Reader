@@ -31,11 +31,19 @@
 |		});
 |
 */
-Route::controller('addfeed');
+// for every file you start adding, you set up this controller. Add the following line and the 
+// title php
+
+
+Route::controller('feed');
 Route::controller('showfeed');
 Route::get('/', function()
-{	
-	return View::make('rss_reader');
+{
+	return View::make('index');
+});
+
+Route::get('about', function() {
+	return View::make('about');
 });
 
 /*
@@ -110,3 +118,18 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('login');
 });
+
+/* -----------------------------------------------
+ * Assets
+ * -----------------------------------------------
+ */
+
+//.css
+ Asset::container('index')->add('index_styles','css/index_styles.css');
+ Asset::container('feeds')->add('styles','css/styles.css');
+ Asset::add('reset', 'css/reset.css');
+
+//.js
+ Asset::add('jquery.min', 'js/jquery.min.js');
+ Asset::add('content_display', 'js/content_display.js');
+ Asset::add('jquery-ui', 'js/jquery-ui.js', 'jquery.min');
