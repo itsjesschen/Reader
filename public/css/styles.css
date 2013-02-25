@@ -84,6 +84,9 @@ a{
 	padding : 10px;
 	margin : 80px 10px 0;
 }
+.errors{
+	background-color: #EEEEEE;
+}
 .progress{
 	margin: 10px auto;
 	display:block;
