@@ -25,7 +25,6 @@
 				<input class = "color-btn" type="submit" value = "Add New Feed"/>
 			</form>
 		</div>
-		<h2> Currently Added Feeds </h2>
 	</div>
 	<div id = "Reader">
 		<div id = "RSSModule">
@@ -35,7 +34,6 @@
 				}?>	
 		</div>
 		<div id="ArticleModule">
-			<h2 class = "title"></h2>
 			<ul class = "article-list">
 			</ul>
 		</div>

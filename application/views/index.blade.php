@@ -17,6 +17,9 @@
 <?php elseif(Session::get('invalidUser')) :?>
 	<div>{{ Session::get('invalidUser') }}</div>
 <?php endif ?>
+<div class= "text">
+	<p> 
+</div>
 <div id = "choice-div">
 	<div class = "form-div">
 		<form class = "feed_form" action="<?php echo URL::to('feed/addRSS') ?>" method="post">
@@ -25,7 +28,7 @@
 			<input class = "color-btn" type="submit" value = "Add New Feed"/>
 		</form>
 	</div>
-	<div class = "list-div"><a href = "<?php echo URL::to('feed') ?>">To Currently Added RSS Feeds <div class = "arrow"></div></a></div>
+	<div class = "list-div"><a href = "<?php echo URL::to('feed') ?>">Currently Added RSS Feeds <div class = "arrow"></div></a></div>
 </div>
 </body>
 </html>

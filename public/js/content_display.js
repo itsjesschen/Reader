@@ -17,14 +17,14 @@ function blurText(item) {
     }
 }
 function searchFieldDisplay(item){
-    if(item.value == item.defaultValue ){//} || item.value =="search for"){
+    if(item.value == item.defaultValue ){
         item.value = "";
     }
 }
 
 function initDescription(){ // so that only 1 click handler is assigned
 	var $min = $("ul.article-list");
-	$min.on('click','div.art-desc', function(){
+	$min.on('click','div.art-desc', function(){ //expands article
     			$this = $(this);
     			var $description = $this.find("p");
     			if( $this.hasClass("expand")){
@@ -39,12 +39,12 @@ function initDescription(){ // so that only 1 click handler is assigned
     $( "#RSSModule" ).disableSelection();
 }
 function getRSS(Feed){
-	var URL = "../public/showfeed/showRSS?URL=" + Feed.id;
+	var URL = "../showfeed/showRSS?URL=" + Feed.id;
 	var $min = $("ul.article-list");
 
 	$.ajax({
 		type:"GET",
-	    url: "../public/showfeed/showRSS",
+	    url: "../showfeed/showRSS",
 	    data:{
 	    	URL : ""+Feed.id
 	    },
@@ -98,7 +98,7 @@ function populateInitialRSS(){
 	//adds swirly vortex of waiting
 	var $title = $("#ArticleModule");
 	$title.append("<p class = 'progress' >Loading Articles...</p>");
-	$title.append("<img class = 'progress' src=../public/img/loader-bar.gif class=center>");
+	$title.append("<img class = 'progress' src=../img/loader-bar.gif class=center>");
 	$('.progress').show();
 	getRSS(Feed);
 }
