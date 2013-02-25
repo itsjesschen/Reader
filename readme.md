@@ -1,22 +1,9 @@
-# [Laravel](http://laravel.com) Quickstart for [Pagodabox](https://pagodabox.com/)
+# [My Reader](http://reader.pagodabox.com/)
 
-Get a copy of Laravel running on Pagodabox in seconds.
+An ongoing side project that I have extended from a class's final. 
 
-Based on the Boxfile method from: http://forums.laravel.com/viewtopic.php?id=890
+V1: Basic functionality. User can add RSS feeds and read short/expanded descriptions
 
-[Official Laravel Website & Documentation](http://laravel.com)
+V2(in progress): Adding login and personal account feature.
 
-[Official Pagodabox Website & Documentation](https://pagodabox.com/)
-
-## Usage
-
-- Install the quickstart on Pagodabox
-- Clone the repo on your machine
-- Open up Boxfile and modify the web1 name
-
-``web1:
-  name: YOUR_APP_NAME``
-
-## Features
-
-- Laravel 3.2.5
+V3(future): Pure Awesomeness...
